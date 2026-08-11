@@ -1,0 +1,26 @@
+{
+  "name": "little-buddies-intro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Professional Little Buddies YouTube intro — Remotion",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion bundle",
+    "generate:audio": "node scripts/generate-backing-audio.mjs",
+    "render": "node scripts/render.mjs",
+    "render:frames": "remotion still LittleBuddiesIntro out/preview-frame.png --frame=90",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.286",
+    "@remotion/media-utils": "4.0.286",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "4.0.286"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  }
+}
