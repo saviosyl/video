@@ -43,7 +43,7 @@ const args = [
   outFile,
   '--codec=h264',
   '--image-format=png',
-  '--crf=18',
+  '--crf=16',
   `--props=${props}`,
 ];
 
