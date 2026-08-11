@@ -32,19 +32,20 @@ export const LogoMark: React.FC = () => {
     frame: Math.max(0, enterLocalFrame),
     fps,
     config: {
-      damping: 12,
-      stiffness: 120,
-      mass: 0.85,
+      // Soft elastic — playful for ages 1–5, never snappy/harsh
+      damping: 14,
+      stiffness: 110,
+      mass: 0.95,
       overshootClamping: false,
     },
   });
 
   // Soft elastic scale-up + slight upward settle
-  const enterScale = interpolate(enterProgress, [0, 1], [0.72, 1]);
-  const enterY = interpolate(enterProgress, [0, 1], [36, 0]);
+  const enterScale = interpolate(enterProgress, [0, 1], [0.78, 1]);
+  const enterY = interpolate(enterProgress, [0, 1], [28, 0]);
   const enterOpacity = interpolate(
     t,
-    [LOGO_ENTER_START, LOGO_ENTER_START + 0.12, LOGO_ENTER_END],
+    [LOGO_ENTER_START, LOGO_ENTER_START + 0.14, LOGO_ENTER_END],
     [0, 1, 1],
     {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
   );
@@ -52,7 +53,7 @@ export const LogoMark: React.FC = () => {
   // Subtle breathing — never distorts the face (uniform scale only)
   const breath =
     t >= LOGO_ENTER_END
-      ? 1 + Math.sin((t - LOGO_ENTER_END) * Math.PI * 1.15) * 0.012
+      ? 1 + Math.sin((t - LOGO_ENTER_END) * Math.PI * 0.95) * 0.01
       : 1;
 
   // Happy bounce synced to “Little Buddies!” vocal cue (~1.3s)
@@ -60,12 +61,12 @@ export const LogoMark: React.FC = () => {
   const emphasis = spring({
     frame: frame - EMPHASIS_START * fps,
     fps,
-    config: {damping: 16, stiffness: 140, mass: 0.7},
+    config: {damping: 18, stiffness: 130, mass: 0.75},
     durationInFrames: Math.round((EMPHASIS_END - EMPHASIS_START) * fps),
   });
   const bounce = t >= EMPHASIS_START ? Math.sin(Math.min(1, Math.max(0, emphasis)) * Math.PI) : 0;
-  const emphasisScale = 1 + bounce * 0.09;
-  const emphasisY = -bounce * 16;
+  const emphasisScale = 1 + bounce * 0.07;
+  const emphasisY = -bounce * 12;
 
   const visible = t >= LOGO_ENTER_START - 0.02;
   if (!visible) {

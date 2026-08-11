@@ -16,4 +16,4 @@ export const VOCAL_AUDIO_CANDIDATES = [
 ] as const;
 
 /** Max logo display width as a fraction of composition width */
-export const LOGO_MAX_WIDTH_RATIO = 0.52;
+export const LOGO_MAX_WIDTH_RATIO = 0.58;
