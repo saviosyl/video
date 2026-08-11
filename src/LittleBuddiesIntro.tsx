@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
 import {SoftBackground} from './components/SoftBackground';
+import {SoftAccentRing} from './components/SoftAccentRing';
 import {Particles} from './components/Particles';
 import {LogoMark} from './components/LogoMark';
 import {BACKING_AUDIO_FILE} from './config/assets';
@@ -30,6 +31,7 @@ export const LittleBuddiesIntro: React.FC<IntroProps> = ({
   return (
     <AbsoluteFill style={{backgroundColor: '#e8f6ff'}}>
       <SoftBackground />
+      <SoftAccentRing />
       <Particles />
       <LogoMark />
 
